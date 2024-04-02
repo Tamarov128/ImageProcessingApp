@@ -209,8 +209,7 @@ Image Image::operator+(const Image& i)
 	for (int j=0; j<m_width; j++)
 		for (int k = 0; k < m_height; k++)
 		{
-			int val = m_data[j][k] + i.m_data[j][k];
-			if (val < 0) val = 0;
+			unsigned int val = m_data[j][k] + i.m_data[j][k];
 			if (val > 255) val = 255;
 			img.m_data[j][k] = val;
 		}
@@ -226,10 +225,10 @@ Image Image::operator-(const Image& i)
 	for (int j = 0; j < m_width; j++)
 		for (int k = 0; k < m_height; k++)
 		{
-			int val = m_data[j][k] - i.m_data[j][k];
-			if (val < 0) val = 0;
-			if (val > 255) val = 255;
-			img.m_data[j][k] = val;
+			if (m_data[j][k] - i.m_data[j][k] < 0)
+				img.m_data[j][k] = 0;
+			else
+				img.m_data[j][k] = m_data[j][k] - i.m_data[j][k];
 		}
 	return img;
 }
@@ -239,12 +238,7 @@ Image Image::operator*(double s)
 	Image img{ m_width, m_height };
 	for (int j = 0; j < m_width; j++)
 		for (int k = 0; k < m_height; k++)
-		{
-			int val = (int)(m_data[j][k] * s);
-			if (val < 0) val = 0;
-			if (val > 255) val = 255;
-			img.m_data[j][k] = val;
-		}
+			img.m_data[j][k] = (int)(m_data[j][k] * s);
 	return img;
 }
 

@@ -2,6 +2,7 @@
 #include "Point.h"
 #include "Rectangle.h"
 #include "Image.h"
+#include "ImageProcessing.h"
 #include <iostream>
 
 #define _CRTDBG_MAP_ALLOC
@@ -10,14 +11,21 @@
 
 int main() {
 	{
-		Image img1{};
-		if (img1.load("fractal_tree.ascii.pgm"))
-			std::cout << "Image loaded successfully!\n";
-		else
-			std::cout << "Image did not load successfully...\n";
-		Image img2{};
-		img1.getROI(img2, 0, 0, 10, 10);
-		std::cout << img2 << std::endl;
+		Image gator{};
+		if (gator.load("gator.ascii.pgm"))
+			std::cout << "Image loaded\n";
+		else 
+			std::cout << "Couldn't load image\n";
+
+		Image gatorLowBrightness{};
+		BrightnessContrast lowBrightness{ 1, -30 };
+		lowBrightness.process(gator, gatorLowBrightness);
+
+		if (gatorLowBrightness.save("gator_low_bright.ascii.pgm"))
+			std::cout << "Low brightness complete\n";
+		else 
+			std::cout << "Low brightness not finished...\n";
+
 	}	
 	_CrtDumpMemoryLeaks();
 	return 0;
