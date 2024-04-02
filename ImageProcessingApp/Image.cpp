@@ -225,7 +225,7 @@ Image Image::operator-(const Image& i)
 	for (int j = 0; j < m_width; j++)
 		for (int k = 0; k < m_height; k++)
 		{
-			if (m_data[j][k] - i.m_data[j][k] < 0)
+			if ((int)m_data[j][k] - (int)i.m_data[j][k] < 0)
 				img.m_data[j][k] = 0;
 			else
 				img.m_data[j][k] = m_data[j][k] - i.m_data[j][k];
