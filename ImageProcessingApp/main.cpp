@@ -17,41 +17,21 @@ int main() {
 		else 
 			std::cout << "Couldn't load image\n";
 
-		Image gatorLowBrightness{};
-		BrightnessContrast lowBrightness{ 1, -70 };
-		lowBrightness.process(gator, gatorLowBrightness);
-
-		if (gatorLowBrightness.save("gator_low_bright.ascii.pgm"))
-			std::cout << "Low brightness complete\n";
-		else 
-			std::cout << "Low brightness not finished...\n";
-
-		Image gatorHighBrightness{};
-		BrightnessContrast highBrightness{ 1, 70 };
-		highBrightness.process(gator, gatorHighBrightness);
-
-		if (gatorHighBrightness.save("gator_high_bright.ascii.pgm"))
-			std::cout << "High brightness complete\n";
+		Image gatorLowGamma{};
+		GammaCorrection lowGamma{ 0.7 };
+		lowGamma.process(gator, gatorLowGamma);
+		if (gatorLowGamma.save("gator_low_gamma.ascii.pgm"))
+			std::cout << "Low gamma processed\n";
 		else
-			std::cout << "High brightness not finished...\n";
+			std::cout << "Low gamma not finished...\n";
 
-		Image gatorLowContrast{};
-		BrightnessContrast lowContrast{ 0.5, 0 };
-		lowContrast.process(gator, gatorLowContrast);
-
-		if (gatorLowContrast.save("gator_low_contr.ascii.pgm"))
-			std::cout << "Low contrast complete\n";
+		Image gatorHighGamma{};
+		GammaCorrection highGamma{ 1.3 };
+		highGamma.process(gator, gatorHighGamma);
+		if (gatorHighGamma.save("gator_high_gamma.ascii.pgm"))
+			std::cout << "High gamma processed\n";
 		else
-			std::cout << "Low contrast not finished...\n";
-
-		Image gatorHighContrast{};
-		BrightnessContrast highContrast{ 2, 0 };
-		highContrast.process(gator, gatorHighContrast);
-
-		if (gatorHighContrast.save("gator_high_contr.ascii.pgm"))
-			std::cout << "High contrast complete\n";
-		else
-			std::cout << "High contrast not finished...\n";
+			std::cout << "High gamma not finished...\n";
 	}	
 	_CrtDumpMemoryLeaks();
 	return 0;

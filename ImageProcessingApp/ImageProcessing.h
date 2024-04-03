@@ -16,3 +16,12 @@ public:
 	void process(const Image& src, Image& dst) override;
 };
 
+class GammaCorrection : public ImageProcessing {
+private:
+	double gamma;
+public:
+	GammaCorrection();
+	GammaCorrection(double g);
+	void process(const Image& src, Image& dst) override;
+};
+
