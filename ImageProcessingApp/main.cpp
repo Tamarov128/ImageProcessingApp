@@ -3,6 +3,8 @@
 #include "Rectangle.h"
 #include "Image.h"
 #include "ImageProcessing.h"
+//#include "Convolution.h"
+#include "Drawing.h"
 #include <iostream>
 
 #define _CRTDBG_MAP_ALLOC
@@ -14,25 +16,18 @@ int main() {
 		Image gator{};
 		if (gator.load("gator.ascii.pgm"))
 			std::cout << "Image loaded\n";
-		else 
+		else
 			std::cout << "Couldn't load image\n";
+		std::cout << gator.width() << " " << gator.height() << std::endl;
 
-		Image gatorLowGamma{};
-		GammaCorrection lowGamma{ 0.7 };
-		lowGamma.process(gator, gatorLowGamma);
-		if (gatorLowGamma.save("gator_low_gamma.ascii.pgm"))
-			std::cout << "Low gamma processed\n";
-		else
-			std::cout << "Low gamma not finished...\n";
+		Point center{ 100, 100 };
+		Drawing::drawCircle(gator, center, 80, 0);
 
-		Image gatorHighGamma{};
-		GammaCorrection highGamma{ 1.3 };
-		highGamma.process(gator, gatorHighGamma);
-		if (gatorHighGamma.save("gator_high_gamma.ascii.pgm"))
-			std::cout << "High gamma processed\n";
+		if (gator.save("gator_circle.ascii.pgm"))
+			std::cout << "Circle drawn\n";
 		else
-			std::cout << "High gamma not finished...\n";
-	}	
+			std::cout << "Couldn't draw circle\n";
+	}
 	_CrtDumpMemoryLeaks();
 	return 0;
 }
