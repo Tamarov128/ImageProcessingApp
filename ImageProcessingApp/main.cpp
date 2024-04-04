@@ -27,6 +27,19 @@ int main() {
 			std::cout << "Circle drawn\n";
 		else
 			std::cout << "Couldn't draw circle\n";
+
+			/*Image draw_img{Image::zeros(100, 100)};
+		std:: cout << draw_img;
+		Point center{ 50, 50 };
+		Drawing::drawCircle(draw_img, center, 30, 250);
+		Point p1{ 10, 40 };
+		Point p2{ 70, 90 };
+		Drawing::drawLine(draw_img, p1, p2, 100);
+		std::cout << draw_img;
+		Point p3{ 10, 80 };
+		Point p4{ 50, 90 };
+		Drawing::drawRectangle(draw_img, p3, p4, 150);
+		draw_img.save("draw_img.ascii.pgm");*/
 	}
 	_CrtDumpMemoryLeaks();
 	return 0;
