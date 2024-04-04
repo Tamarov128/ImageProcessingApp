@@ -7,10 +7,6 @@ void Drawing::drawCircle(Image& img, Point center, int radius, unsigned int colo
         for (int y = 0; y < img.height(); y++)
             if ((x - center.getX()) * (x - center.getX()) + (y - center.getY()) * (y - center.getY()) <= radius * radius) {
                 img.at(x, y) = color;
-                if (100 <= x && x <= 110) {
-                    std::cout << x - center.getX() << " " << y - center.getY() << " " << radius * radius << std::endl;
-                    std::cout << "x:" << x << " y:" << y << std::endl;
-                }
             }
 }
 
