@@ -27,6 +27,12 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ImageProcessing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,8 +44,24 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImageProcessing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fractal_tree.ascii.pgm" />
+    <None Include="gator.ascii.pgm" />
+    <None Include="gator_low_bright.ascii.pgm" />
+    <None Include="gator_high_bright.ascii.pgm" />
+    <None Include="gator_high_contr.ascii.pgm" />
+    <None Include="gator_low_contr.ascii.pgm" />
+    <None Include="gator_mean_blur.ascii.pgm" />
+    <None Include="gator_gauss_blur.ascii.pgm" />
+    <None Include="gator_horiz_sobel.ascii.pgm" />
+    <None Include="gator_vertic_sobel.ascii.pgm" />
+    <None Include="gator_high_gamma.ascii.pgm" />
+    <None Include="gator_low_gamma.ascii.pgm" />
   </ItemGroup>
 </Project>
