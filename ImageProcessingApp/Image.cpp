@@ -154,8 +154,8 @@ std::ostream& operator<<(std::ostream& os, const Image& dt)
 	os << "P2" << std::endl;
 	os << dt.m_width << " " << dt.m_height << std::endl;
 	os << "255" << std::endl;
-	for (int i = 0; i < dt.m_width; i++) {
-		for (int j = 0; j < dt.m_height; j++)
+	for (int j = 0; j < dt.m_height; j++) {
+		for (int i = 0; i < dt.m_width; i++)
 			os << dt.m_data[i][j] << " ";
 		os << std::endl;
 	}
@@ -166,14 +166,13 @@ std::istream& operator>>(std::istream& is, Image& dt)
 {
 	std::string magic;
 	is >> magic;
-	dt.release();
-	is >> dt.m_width >> dt.m_height;
-	int pixels;
-	is >> pixels;
-	dt.m_data = new unsigned int* [dt.m_width];
-	for (int i = 0; i < dt.m_width; i++) {
-		dt.m_data[i] = new unsigned int[dt.m_height];
-		for (int j = 0; j < dt.m_height; j++)
+	unsigned int width, height;
+	is >> width >> height;
+	dt = Image{ width, height };
+	int max_pixels;
+	is >> max_pixels;
+	for (int j = 0; j < dt.m_height; j++) {
+		for (int i = 0; i < dt.m_width; i++)
 			is >> dt.m_data[i][j];
 	}
 	return is;
